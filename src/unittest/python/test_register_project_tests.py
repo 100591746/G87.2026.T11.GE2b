@@ -1,16 +1,16 @@
 """Tests for EnterpriseManager.register_document"""
 
+
 import json
 import os
-import re
 import tempfile
 import unittest
 from unittest.mock import patch
 
-from src.main.python.uc3m_consulting.enterprise_manager import EnterpriseManager
-from src.main.python.uc3m_consulting.enterprise_management_exception import (
-    EnterpriseManagementException,
-)
+# CORRECT
+# CORRECT
+from uc3m_consulting.enterprise_manager import EnterpriseManager
+from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
 
 class TestRegisterDocument(unittest.TestCase):
