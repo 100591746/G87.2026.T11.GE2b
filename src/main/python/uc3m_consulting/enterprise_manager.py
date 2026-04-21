@@ -1,8 +1,11 @@
 """Module """
-from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 import json
+from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
+
+
 class EnterpriseManager:
     """Class for providing the methods for managing the orders"""
+
     def __init__(self):
         pass
 
@@ -22,7 +25,10 @@ class EnterpriseManager:
         except FileNotFoundError as e:
             raise EnterpriseManagementException("Input file not found") from e
         except json.JSONDecodeError as e:
-            raise EnterpriseManagementExceptionoka
+            raise EnterpriseManagementException("File is not JSON formatted") from e
+
+        if not isinstance(data, dict):
+            raise EnterpriseManagementException("JSON does not have expected structure")
 
 
 
