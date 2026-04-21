@@ -49,3 +49,6 @@ class EnterpriseManager:
 
         if not re.fullmatch(r"[0-9a-fA-F]{32}", project_id):
             raise EnterpriseManagementException("JSON data has no valid values")
+
+        if not re.fullmatch(r"[a-zA-Z0-9]{8}\.(pdf|docx|xlsx)", filename):
+            raise EnterpriseManagementException("JSON data has no valid values")
