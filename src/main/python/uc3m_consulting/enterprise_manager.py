@@ -24,15 +24,6 @@ class EnterpriseManager:
         except json.JSONDecodeError as e:
             raise EnterpriseManagementExceptionoka
 
-    def test_tcf2_09_array_root(self):
-        """TCF2_09 Top-level JSON is array instead of object"""
-        content = (
-            '[{"PROJECT_ID":"0123456789abcdef0123456789abcdef",'
-            '"FILENAME":"AB12CD34.pdf"}]'
-        )
-        input_file = self._create_input_file("f2_tc09_array_root.json", content)
-        with self.assertRaises(EnterpriseManagementException):
-            self.manager.register_document(input_file)
 
 
 

@@ -51,6 +51,15 @@ class TestRegisterDocument(unittest.TestCase):
         input_file = self._create_input_file("f2_tc05_missing_open_brace.json", content)
         with self.assertRaises(EnterpriseManagementException):
             self.manager.register_document(input_file)
+    def test_tcf2_09_array_root(self):
+        """TCF2_09 Top-level JSON is array instead of object"""
+        content = (
+            '[{"PROJECT_ID":"0123456789abcdef0123456789abcdef",'
+            '"FILENAME":"AB12CD34.pdf"}]'
+        )
+        input_file = self._create_input_file("f2_tc09_array_root.json", content)
+        with self.assertRaises(EnterpriseManagementException):
+            self.manager.register_document(input_file)
 
 
 if __name__ == "__main__":
