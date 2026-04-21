@@ -372,11 +372,7 @@ class TestRegisterDocument(unittest.TestCase):
     # INTERNAL PROCESSING ERROR
     # ---------------------------------------------------------
 
-    @patch(
-        "src.main.python.uc3m_consulting.project_document.ProjectDocument.document_signature",
-        new_callable=property,
-    )
-    def test_tcf2_28_internal_hash_error(self, _mock_property):
+    def test_tcf2_28_internal_hash_error(self):
         """TCF2_28 Internal processing error while generating SHA-256"""
 
         content = (
@@ -385,13 +381,13 @@ class TestRegisterDocument(unittest.TestCase):
         )
         input_file = self._create_input_file("f2_tc28_hash_error.json", content)
 
-        # The decorator approach above does not make the property raise by itself,
-        # so patching a helper method in EnterpriseManager is often easier.
-        # Keep this test as a placeholder if your implementation wraps signature
-        # generation in a private helper.
-
-        with self.assertRaises(EnterpriseManagementException):
-            self.manager.register_document(input_file)
+        with patch.object(
+                EnterpriseManager,
+                "_get_document_signature",
+                side_effect=Exception("forced hash error")
+        ):
+            with self.assertRaises(EnterpriseManagementException):
+                self.manager.register_document(input_file)
 
 
 if __name__ == "__main__":

@@ -58,7 +58,8 @@ class EnterpriseManager:
 
         try:
             document = ProjectDocument(project_id, filename)
-            signature = document.document_signature
+            signature = EnterpriseManager._get_document_signature(document)
+            document_json = document.to_json()
         except Exception as exc:
             raise EnterpriseManagementException(
                 "Internal processing error when getting the file_signature"
@@ -102,8 +103,11 @@ class EnterpriseManager:
         except json.JSONDecodeError as e:
             raise EnterpriseManagementException("File is not JSON formatted") from e
 
-
-
         return signature
+
+    @staticmethod
+    def _get_document_signature(document):
+        """Gets the document signature"""
+        return document.document_signature
 
 
