@@ -35,6 +35,16 @@ class EnterpriseManager:
         # Must have exactly these two keys
         if set(data.keys()) != expected_keys:
             raise EnterpriseManagementException("JSON does not have expected structure")
+        project_id = data["PROJECT_ID"]
+        filename = data["FILENAME"]
+
+        # Validate PROJECT_ID is a string
+        if not isinstance(project_id, str):
+            raise EnterpriseManagementException("JSON data has no valid values")
+
+        # Validate FILENAME is a string
+        if not isinstance(filename, str):
+            raise EnterpriseManagementException("JSON data has no valid values")
 
 
 
