@@ -1,6 +1,9 @@
 """Module """
 import json
 import re
+import os
+
+from uc3m_consulting import ProjectDocument
 from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
 
@@ -52,3 +55,35 @@ class EnterpriseManager:
 
         if not re.fullmatch(r"[a-zA-Z0-9]{8}\.(pdf|docx|xlsx)", filename):
             raise EnterpriseManagementException("JSON data has no valid values")
+
+        try:
+            document = ProjectDocument(project_id, filename)
+            signature = document.document_signature
+        except Exception as exc:
+            raise EnterpriseManagementException(
+                "Internal processing error when getting the file_signature"
+            ) from exc
+
+        documents = []
+        all_documents_path = "all_documents.json"
+
+        if os.path.exists(all_documents_path):
+            try:
+                with open(all_documents_path, "r", encoding="utf-8") as file:
+                    documents = json.load(file)
+            except (json.JSONDecodeError, OSError) as exc:
+                raise EnterpriseManagementException(
+                    "Internal processing error when getting the file_signature"
+                ) from exc
+
+        documents.append(document.to_json())
+
+        try:
+            with open(all_documents_path, "w", encoding="utf-8") as file:
+                json.dump(documents, file, indent=2)
+        except OSError as exc:
+            raise EnterpriseManagementException(
+                "Internal processing error when getting the file_signature"
+            ) from exc
+
+        return signature
