@@ -30,6 +30,12 @@ class EnterpriseManager:
         if not isinstance(data, dict):
             raise EnterpriseManagementException("JSON does not have expected structure")
 
+        expected_keys = {"PROJECT_ID", "FILENAME"}
+
+        # Must have exactly these two keys
+        if set(data.keys()) != expected_keys:
+            raise EnterpriseManagementException("JSON does not have expected structure")
+
 
 
 
