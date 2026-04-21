@@ -1,5 +1,6 @@
 """Module """
 from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
+import json
 class EnterpriseManager:
     """Class for providing the methods for managing the orders"""
     def __init__(self):
@@ -14,10 +15,17 @@ class EnterpriseManager:
     @staticmethod
     def register_document(input_file: str):
         """Registers a document for a project by validating the input file,
-            computing a SHA-256 signature, and storing the result."""
+        computing a SHA-256 signature, and storing the result."""
         try:
             with open(input_file, "r", encoding="utf-8") as f:
-                pass
+                data = json.load(f)
         except FileNotFoundError as e:
             raise EnterpriseManagementException("Input file not found") from e
-        pass
+        except json.JSONDecodeError as e:
+            raise EnterpriseManagementExceptionoka
+
+
+
+
+
+
