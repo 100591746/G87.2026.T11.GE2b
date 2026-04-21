@@ -86,4 +86,24 @@ class EnterpriseManager:
                 "Internal processing error when getting the file_signature"
             ) from exc
 
+        try:
+            with open(input_file, "r", encoding="utf-8") as f:
+                content = f.read()
+        except FileNotFoundError as e:
+            raise EnterpriseManagementException("Input file not found") from e
+
+        # Check for duplicate keys
+        keys = re.findall(r'"(PROJECT_ID|FILENAME)"\s*:', content)
+        if keys.count("PROJECT_ID") > 1 or keys.count("FILENAME") > 1:
+            raise EnterpriseManagementException("JSON does not have expected structure")
+
+        try:
+            data = json.loads(content)
+        except json.JSONDecodeError as e:
+            raise EnterpriseManagementException("File is not JSON formatted") from e
+
+
+
         return signature
+
+
