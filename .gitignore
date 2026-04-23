@@ -62,9 +62,3 @@ dist/
 # Environment variables
 # ----------------------------
 .env
-
-# ----------------------------
-# Generated files (IMPORTANT for your assignment)
-# ----------------------------
-all_documents.json
-docs/test_reports/

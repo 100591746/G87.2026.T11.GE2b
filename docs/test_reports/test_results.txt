@@ -1,0 +1,63 @@
+test_tcf2_01_valid_pdf (test_register_project_tests.TestRegisterDocument)
+TCF2_01 Valid JSON with valid PROJECT_ID and .pdf ... ok
+test_tcf2_02_valid_docx (test_register_project_tests.TestRegisterDocument)
+TCF2_02 Valid JSON with valid PROJECT_ID and .docx ... ok
+test_tcf2_03_valid_xlsx (test_register_project_tests.TestRegisterDocument)
+TCF2_03 Valid JSON with valid PROJECT_ID and .xlsx ... ok
+test_tcf2_04_input_file_not_found (test_register_project_tests.TestRegisterDocument)
+TCF2_04 Input file path does not exist ... ok
+test_tcf2_05_missing_open_brace (test_register_project_tests.TestRegisterDocument)
+TCF2_05 JSON syntax error: missing opening brace ... ok
+test_tcf2_06_missing_close_brace (test_register_project_tests.TestRegisterDocument)
+TCF2_06 JSON syntax error: missing closing brace ... ok
+test_tcf2_07_missing_comma (test_register_project_tests.TestRegisterDocument)
+TCF2_07 JSON syntax error: missing comma ... ok
+test_tcf2_08_extra_comma (test_register_project_tests.TestRegisterDocument)
+TCF2_08 JSON syntax error: extra comma before closing brace ... ok
+test_tcf2_09_array_root (test_register_project_tests.TestRegisterDocument)
+TCF2_09 Top-level JSON is array instead of object ... ok
+test_tcf2_10_missing_project_id (test_register_project_tests.TestRegisterDocument)
+TCF2_10 PROJECT_ID field is missing ... ok
+test_tcf2_11_missing_filename (test_register_project_tests.TestRegisterDocument)
+TCF2_11 FILENAME field is missing ... ok
+test_tcf2_12_duplicate_project_id (test_register_project_tests.TestRegisterDocument)
+TCF2_12 PROJECT_ID key appears twice ... ok
+test_tcf2_13_duplicate_filename (test_register_project_tests.TestRegisterDocument)
+TCF2_13 FILENAME key appears twice ... ok
+test_tcf2_14_project_id_not_string (test_register_project_tests.TestRegisterDocument)
+TCF2_14 PROJECT_ID value is not a string ... ok
+test_tcf2_15_project_id_len31 (test_register_project_tests.TestRegisterDocument)
+TCF2_15 PROJECT_ID has 31 hex characters ... ok
+test_tcf2_16_project_id_len33 (test_register_project_tests.TestRegisterDocument)
+TCF2_16 PROJECT_ID has 33 hex characters ... ok
+test_tcf2_17_project_id_non_hex (test_register_project_tests.TestRegisterDocument)
+TCF2_17 PROJECT_ID contains non-hex char ... ok
+test_tcf2_18_filename_not_string (test_register_project_tests.TestRegisterDocument)
+TCF2_18 FILENAME value is not a string ... ok
+test_tcf2_19_name_len7 (test_register_project_tests.TestRegisterDocument)
+TCF2_19 Filename base name has 7 chars ... ok
+test_tcf2_20_name_len9 (test_register_project_tests.TestRegisterDocument)
+TCF2_20 Filename base name has 9 chars ... ok
+test_tcf2_21_name_underscore (test_register_project_tests.TestRegisterDocument)
+TCF2_21 Filename base name contains underscore ... ok
+test_tcf2_22_name_space (test_register_project_tests.TestRegisterDocument)
+TCF2_22 Filename base name contains space ... ok
+test_tcf2_23_no_extension (test_register_project_tests.TestRegisterDocument)
+TCF2_23 Filename has no extension ... ok
+test_tcf2_24_bad_extension_txt (test_register_project_tests.TestRegisterDocument)
+TCF2_24 Filename extension is not allowed ... ok
+test_tcf2_25_bad_extension_case (test_register_project_tests.TestRegisterDocument)
+TCF2_25 Filename extension wrong case ... ok
+test_tcf2_26_wrong_key_name (test_register_project_tests.TestRegisterDocument)
+TCF2_26 PROJECT_ID key name is misspelled ... ok
+test_tcf2_27_empty_object (test_register_project_tests.TestRegisterDocument)
+TCF2_27 Empty JSON object ... ok
+test_tcf2_28_internal_hash_error (test_register_project_tests.TestRegisterDocument)
+TCF2_28 Internal processing error while generating SHA-256 ... ok
+test_tcf2_29_valid_digits_name (test_register_project_tests.TestRegisterDocument)
+TCF2_29 Valid filename with 8 digits and allowed .pdf ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.018s
+
+OK
